@@ -1,15 +1,65 @@
-Source: template-repository
-Section: unknown
+Source: kf6-kcodecs
+Section: kde
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Uploaders: Aurélien COUDERC <coucouf@debian.org>,
+           Patrick Franz <deltaone@debian.org>,
+Build-Depends: cmake (>= 3.16~),
+               debhelper-compat (= 13),
+               dh-sequence-kf6,
+               dh-sequence-pkgkde-symbolshelper,
+               doxygen,
+               extra-cmake-modules (>= 6.6.0~),
+               gperf,
+               qt6-base-dev (>= 6.5.0+dfsg~),
+               qt6-tools-dev (>= 6.5.0~),
+Standards-Version: 4.7.0
+Homepage: https://invent.kde.org/frameworks/kcodecs
+Vcs-Browser: https://salsa.debian.org/qt-kde-team/kde/kf6-kcodecs
+Vcs-Git: https://salsa.debian.org/qt-kde-team/kde/kf6-kcodecs.git
+Rules-Requires-Root: no
 
-Package: template-repository
+Package: libkf6codecs-data
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+Description: collection of methods to manipulate strings
+ KCodecs provide a collection of methods to manipulate strings
+ using various encodings.
+ .
+ This package contains the translations.
+
+Package: libkf6codecs-dev
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Multi-Arch: same
+Section: libdevel
+Depends: libkf6codecs6 (= ${binary:Version}),
+         qt6-base-dev (>= 6.5.0+dfsg~),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Recommends: libkf6codecs-doc (= ${source:Version}),
+Description: development files for kcodecs
+ This package contains development files for building software that uses
+ libraries from kcodecs.
+
+Package: libkf6codecs-doc
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+Description: collection of methods to manipulate strings (documentation)
+ KCodecs provide a collection of methods to manipulate strings
+ using various encodings.
+ .
+ This package contains the qch documentation files.
+Section: doc
+
+Package: libkf6codecs6
+Section: libs
+Architecture: any
+Multi-Arch: same
+Depends: libkf6codecs-data (= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Description: collection of methods to manipulate strings
+ KCodecs provide a collection of methods to manipulate strings
+ using various encodings.
