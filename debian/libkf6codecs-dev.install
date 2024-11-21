@@ -1,0 +1,3 @@
+usr/include/KF6/KCodecs/
+usr/lib/*/cmake/KF6Codecs/
+usr/lib/*/libKF6Codecs.so
